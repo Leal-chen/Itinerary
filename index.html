@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>贵州山野自驾之旅｜9.28-10.05沉浸式路书</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#2C5F44',
+        secondary: '#72A793'
+      },
+      fontFamily: {
+        serif: ['Georgia', 'serif']
+      }
+    }
+  }
+}
+</script>
+<style type="text/tailwindcss">
+@layer utilities {
+  .card-shadow {
+    box-shadow: 0 2px 12px rgba(44, 95, 68, 0.08);
+  }
+  .nav-blur {
+    backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.85);
+  }
+  .scroll-fade {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.6s cubic-bezier(0.2,0,0.2,1);
+  }
+  .scroll-fade.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .img-zoom {
+    transition: transform 0.5s ease;
+  }
+  .img-zoom:hover {
+    transform: scale(1.03);
+  }
+}
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #72A793;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+html {
+  scroll-behavior: smooth;
+}
+</style>
+</head>
+<body class="bg-[#f8fbf9] text-[#222c2a]">
+<!-- 导航栏 -->
+<nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-3">
+  <div class="max-w-5xl mx-auto px-6 flex justify-between items-center">
+    <span class="font-serif text-primary font-bold text-xl">贵州自驾路书</span>
+    <div class="hidden md:flex gap-6 text-sm text-gray-700">
+      <a href="#overview" class="hover:text-primary transition-colors">行程总览</a>
+      <a href="#daylist" class="hover:text-primary transition-colors">每日行程</a>
+      <a href="#gallery" class="hover:text-primary transition-colors">景点图鉴</a>
+      <a href="#info" class="hover:text-primary transition-colors">实用信息</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 头部封面 -->
+<header class="w-full h-[85vh] flex items-end justify-center px-6 pb-20 relative bg-cover bg-fixed bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1596422846543-75c6fc197111?q=80&w=2070&auto=format&fit=crop')">
+  <div class="relative z-10 text-white scroll-fade show text-center">
+    <h1 class="text-[clamp(2rem,6vw,3.5rem)] font-serif font-bold mb-3 drop-shadow-lg">贵州山野自驾之旅</h1>
+    <p class="text-[clamp(1rem,2vw,1.2rem)] opacity-95 mb-6">9.28 - 10.05 | C-Plus灵活定稿版 · 沉浸式路书</p>
+    <div class="flex flex-wrap justify-center gap-3 text-sm">
+      <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full">🌲 森林穿越</span>
+      <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full">💧 溪流溯溪</span>
+      <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full">🌊 瀑布秘境</span>
+      <span class="bg-white/20 backdrop-blur px-4 py-2 rounded-full">🚣 峡谷漂流</span>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-5xl mx-auto px-6 py-16">
+<!-- 行程总览 -->
+<section id="overview" class="mb-24 scroll-fade">
+  <h2 class="text-2xl font-serif text-primary font-bold mb-6 pb-2 border-b border-secondary/30">行程总览 Overview</h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+    <div class="bg-white rounded-xl p-5 card-shadow text-center">
+      <p class="text-3xl font-bold text-primary">8天8晚</p>
+      <p class="text-sm text-gray-500 mt-1">全程深度自驾</p>
+    </div>
+    <div class="bg-white rounded-xl p-5 card-shadow text-center">
+      <p class="text-3xl font-bold text-primary">4大核心</p>
+      <p class="text-sm text-gray-500 mt-1">森系户外体验</p>
+    </div>
+    <div class="bg-white rounded-xl p-5 card-shadow text-center">
+      <p class="text-3xl font-bold text-primary">最优动线</p>
+      <p class="text-sm text-gray-500 mt-1">零无效折返</p>
+    </div>
+    <div class="bg-white rounded-xl p-5 card-shadow text-center">
+      <p class="text-3xl font-bold text-primary">零误机</p>
+      <p class="text-sm text-gray-500 mt-1">机场兜底返程</p>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl p-6 card-shadow">
+    <h3 class="font-serif text-lg text-primary font-bold mb-4">📌 核心设定</h3>
+    <ul class="text-gray-700 space-y-2 text-sm">
+      <li><strong>出行周期</strong>：9.28 中午贵阳取车 → 10.5 15:00贵阳龙洞堡机场返程</li>
+      <li><strong>必玩核心</strong>：茂兰漏斗森林穿越、关岭冰臼溯溪、黄果树大瀑布、南江大峡谷集体漂流</li>
+      <li><strong>组队规则</strong>：10.1关岭全员汇合｜10.3统一集体活动｜10.4自由分流休整</li>
+      <li><strong>体力分级</strong>：🔴高强度｜🟡中等｜🟢松弛Chill</li>
+      <li><strong>国庆容错</strong>：所有车程预留1~1.5h堵车冗余，行程高灵活可调</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 每日行程 -->
+<section id="daylist" class="mb-24">
+  <h2 class="text-2xl font-serif text-primary font-bold mb-8 pb-2 border-b border-secondary/30 scroll-fade">每日行程日程</h2>
+
+  <!-- Day1 -->
+  <div class="bg-white rounded-xl overflow-hidden card-shadow mb-10 scroll-fade">
+    <div class="h-52 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1571661884558-1c8be2c9e726?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover img-zoom" alt="茂兰喀斯特森林">
+    </div>
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">Day1 9.28</span>
+        <span class="text-green-600 text-sm">🟢 松弛Chill</span>
+      </div>
+      <h3 class="font-serif text-lg font-bold text-gray-800 mb-2">贵阳取车 → 茂兰 · 森林兜风</h3>
+      <p class="text-sm text-gray-600 mb-4">290km｜国庆预留5-6h车程，纯赶路休整，无徒步压力</p>
+      <ul class="text-sm text-gray-700 space-y-1 mb-4">
+        <li>✅ 中午贵阳取车，采购全套户外溯溪物资</li>
+        <li>✅ 下午自驾南下荔波，傍晚入住茂兰民宿</li>
+        <li>✅ 保护区乡道小众兜风，沉浸式喀斯特山野风光</li>
+        <li>✅ 对接次日向导，早睡储备徒步体力</li>
+      </ul>
+      <div class="text-sm border-t pt-3 text-gray-600">
+        <p><strong>住宿</strong>：茂兰五眼桥民宿｜<strong>美食</strong>：布依族农家菜、土鸡酸汤</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day2 -->
+  <div class="bg-white rounded-xl overflow-hidden card-shadow mb-10 scroll-fade">
+    <div class="h-52 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2071&auto=format&fit=crop" class="w-full h-full object-cover img-zoom" alt="漏斗森林原始穿越">
+    </div>
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">Day2 9.29</span>
+        <span class="text-red-600 text-sm">🔴 高强度徒步</span>
+      </div>
+      <h3 class="font-serif text-lg font-bold text-gray-800 mb-2">茂兰漏斗森林 · 原始荒野穿越</h3>
+      <p class="text-sm text-gray-600 mb-4">12km原始野路｜6-7h深度穿越，大部分区域无手机信号</p>
+      <ul class="text-sm text-gray-700 space-y-1 mb-4">
+        <li>✅ 07:30本地向导带队，纯原生漏斗森林穿越</li>
+        <li>✅ 避开网红流水线，沉浸式小众秘境体验</li>
+        <li>✅ 自备路餐水源，16点前全员返程民宿</li>
+        <li>✅ 傍晚轻松休整，不消耗剩余体力</li>
+      </ul>
+      <div class="text-sm border-t pt-3 text-gray-600">
+        <p><strong>住宿</strong>：续住茂兰民宿｜<strong>美食</strong>：农家简餐、徒步路餐</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day3 -->
+  <div class="bg-white rounded-xl overflow-hidden card-shadow mb-10 scroll-fade">
+    <div class="h-52 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1505227441537-229d345ebb05?q=80&w=2076&auto=format&fit=crop" class="w-full h-full object-cover img-zoom" alt="贵州高速自驾">
+    </div>
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">Day3 9.30</span>
+        <span class="text-yellow-600 text-sm">🟡 赶路休整</span>
+      </div>
+      <h3 class="font-serif text-lg font-bold text-gray-800 mb-2">茂兰直穿黄果树 · 零无效折返</h3>
+      <p class="text-sm text-gray-600 mb-4">340km跨区域直行｜国庆预留6-6.5h，纯休整无游玩</p>
+      <ul class="text-sm text-gray-700 space-y-1 mb-4">
+        <li>✅ 清晨错峰出发，分段行驶高频休息防疲劳</li>
+        <li>✅ 东南直穿贵州西部，规避贵阳无效折返路程</li>
+        <li>✅ 傍晚抵达黄果树镇区，静养蓄力后续行程</li>
+      </ul>
+      <div class="text-sm border-t pt-3 text-gray-600">
+        <p><strong>住宿</strong>：黄果树镇｜<strong>美食</strong>：本地土菜、贵州家常小炒</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day4 -->
+  <div class="bg-white rounded-xl overflow-hidden card-shadow mb-10 scroll-fade">
+    <div class="h-52 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1603237568326-b22f6db4bd92?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover img-zoom" alt="关岭冰臼溪流">
+    </div>
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">Day4 10.01</span>
+        <span class="text-yellow-600 text-sm">🟡 中等强度｜全员汇合</span>
+      </div>
+      <h3 class="font-serif text-lg font-bold text-gray-800 mb-2">关岭冰臼溯溪 + 滴水滩瀑布远眺</h3>
+      <p class="text-sm text-gray-600 mb-4">8-10km溯溪徒步｜双车正式汇合，小众野生秘境打卡</p>
+      <ul class="text-sm text-gray-700 space-y-1 mb-4">
+        <li>✅ 小伙伴自驾至关岭，两队全员汇合集结</li>
+        <li>✅ 万年冰川冰臼秘境，果冻色溪流溯溪徒步</li>
+        <li>✅ 关兴公路峡谷自驾，俯瞰北盘江大峡谷全景</li>
+        <li>✅ 可选滴水滩高位观景，打卡410米超级叠瀑</li>
+      </ul>
+      <div class="text-sm border-t pt-3 text-gray-600">
+        <p><strong>住宿</strong>：黄果树镇续住｜<strong>美食</strong>：酸汤鱼、本地河鲜</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day5 -->
+  <div class="bg-white rounded-xl overflow-hidden card-shadow mb-10 scroll-fade">
+    <div class="h-52 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1518952286450-139338af9038?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover img-zoom" alt="黄果树瀑布">
+    </div>
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">Day5 10.02</span>
+        <span class="text-yellow-600 text-sm">🟡 中等强度</span>
+      </div>
+      <h3 class="font-serif text-lg font-bold text-gray-800 mb-2">黄果树深度游玩 · 傍晚返程贵阳</h3>
+      <p class="text-sm text-gray-600 mb-4">4-5h景区徒步｜130km返程，预留国庆晚高峰堵车时间</p>
+      <ul class="text-sm text-gray-700 space-y-1 mb-4">
+        <li>✅ 07:00早入园避开国庆人流峰值</li>
+        <li>✅ 标准最优动线：陡坡塘→天星桥后半段→大瀑布水帘洞</li>
+        <li>✅ 15-16点错峰出景区，休整补给</li>
+        <li>✅ 傍晚返程龙洞堡，锁定机场兜底住宿区位</li>
+      </ul>
+      <div class="text-sm border-t pt-3 text-gray-600">
+        <p><strong>住宿</strong>：贵阳龙洞堡酒店｜<strong>美食</strong>：夜市小吃、地摊火锅</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day6 -->
+  <div class="bg-white rounded-xl overflow-hidden card-shadow mb-10 scroll-fade">
+    <div class="h-52 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1531889056943-98b4557a8131?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover img-zoom" alt="南江大峡谷漂流">
+    </div>
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">Day6 10.03</span>
+        <span class="text-yellow-600 text-sm">🟡 全员集体玩水日</span>
+      </div>
+      <h3 class="font-serif text-lg font-bold text-gray-800 mb-2">南江大峡谷激情漂流 · 开阳灵活加餐</h3>
+      <p class="text-sm text-gray-600 mb-4">本次旅行唯一全员统一集体项目，松弛治愈玩水体验</p>
+      <ul class="text-sm text-gray-700 space-y-1 mb-4">
+        <li>✅ 优先保障完整2.5h激情漂流核心体验</li>
+        <li>✅ 12:30前抵达，规避15点停票截止时间</li>
+        <li>✅ 时间充裕可顺路打卡开阳十里画廊古寨</li>
+        <li>✅ 雨天自动替换轻徒步预案，行程不浪费</li>
+      </ul>
+      <div class="text-sm border-t pt-3 text-gray-600">
+        <p><strong>住宿</strong>：龙洞堡续住｜<strong>美食</strong>：景区农家菜、开阳本地风味</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day7 -->
+  <div class="bg-white rounded-xl overflow-hidden card-shadow mb-10 scroll-fade">
+    <div class="h-52 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1593972750762-ef5f302e9262?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover img-zoom" alt="贵阳城市松弛休整">
+    </div>
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">Day7 10.04</span>
+        <span class="text-green-600 text-sm">🟢 自由分流休整</span>
+      </div>
+      <h3 class="font-serif text-lg font-bold text-gray-800 mb-2">贵阳松弛休整 · 自由安排日</h3>
+      <p class="text-sm text-gray-600 mb-4">集体行程正式结束，全员自由活动，储能准备返程</p>
+      <ul class="text-sm text-gray-700 space-y-1 mb-4">
+        <li>✅ 先行部队休整行李、储备返程体力</li>
+        <li>✅ 小伙伴可自主分流，自由安排出行</li>
+        <li>✅ 可选青岩古镇、双龙镇、多彩贵州城近郊游玩</li>
+        <li>✅ 可纯躺平逛吃贵阳特色美食</li>
+      </ul>
+      <div class="text-sm border-t pt-3 text-gray-600">
+        <p><strong>住宿</strong>：龙洞堡机场酒店｜<strong>美食</strong>：肠旺面、丝娃娃、香酥鸭</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day8 -->
+  <div class="bg-white rounded-xl overflow-hidden card-shadow scroll-fade">
+    <div class="h-52 overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop" class="w-full h-full object-cover img-zoom" alt="从容返程">
+    </div>
+    <div class="p-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-primary text-white text-xs px-3 py-1 rounded-full">Day8 10.05</span>
+        <span class="text-green-600 text-sm">🟢 从容返程</span>
+      </div>
+      <h3 class="font-serif text-lg font-bold text-gray-800 mb-2">零风险返程 · 顺利登机</h3>
+      <p class="text-sm text-gray-600 mb-4">无赶路、无游玩、全程松弛，彻底规避误机风险</p>
+      <ul class="text-sm text-gray-700 space-y-1">
+        <li>✅ 11:30前完成全部还车、验车手续</li>
+        <li>✅ 从容前往航站楼，预留充足登机缓冲时间</li>
+        <li>✅ 完美适配15:00起飞航班，全程稳妥兜底</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 景点图鉴 -->
+<section id="gallery" class="mb-24 scroll-fade">
+  <h2 class="text-2xl font-serif text-primary font-bold mb-8 pb-2 border-b border-secondary/30">核心景点图鉴</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="bg-white rounded-xl overflow-hidden card-shadow">
+      <img src="https://images.unsplash.com/photo-1571661884558-1c8be2c9e726?q=80&w=2070&auto=format&fit=crop" class="w-full h-48 object-cover img-zoom" alt="茂兰漏斗森林">
+      <div class="p-5">
+        <h3 class="font-bold text-gray-800 mb-2">茂兰漏斗森林</h3>
+        <p class="text-sm text-gray-600">贵州顶级原生喀斯特森林，漏斗洼地地貌，无商业化雕琢，沉浸式原始荒野穿越体验。</p>
+      </div>
+    </div>
+    <div class="bg-white rounded-xl overflow-hidden card-shadow">
+      <img src="https://images.unsplash.com/photo-1603237568326-b22f6db4bd92?q=80&w=2070&auto=format&fit=crop" class="w-full h-48 object-cover img-zoom" alt="关岭冰臼">
+      <div class="p-5">
+        <h3 class="font-bold text-gray-800 mb-2">关岭冰臼</h3>
+        <p class="text-sm text-gray-600">万年冰川遗迹野生峡谷，果冻色清澈溪流，原生态溯溪秘境，游客极少、出片率极高。</p>
+      </div>
+    </div>
+    <div class="bg-white rounded-xl overflow-hidden card-shadow">
+      <img src="https://images.unsplash.com/photo-1518952286450-139338af9038?q=80&w=2070&auto=format&fit=crop" class="w-full h-48 object-cover img-zoom" alt="黄果树瀑布">
+      <div class="p-5">
+        <h3 class="font-bold text-gray-800 mb-2">黄果树大瀑布</h3>
+        <p class="text-sm text-gray-600">国内顶级喀斯特瀑布群，三大景区连片游玩，水帘洞沉浸式打卡，经典地标山水风光。</p>
+      </div>
+    </div>
+    <div class="bg-white rounded-xl overflow-hidden card-shadow">
+      <img src="https://images.unsplash.com/photo-1531889056943-98b4557a8131?q=80&w=2070&auto=format&fit=crop" class="w-full h-48 object-cover img-zoom" alt="南江大峡谷">
+      <div class="p-5">
+        <h3 class="font-bold text-gray-800 mb-2">南江大峡谷漂流</h3>
+        <p class="text-sm text-gray-600">贵阳周边优质峡谷漂流，山林环抱河道，团队互动性极强，治愈旅途疲惫。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 实用信息 -->
+<section id="info" class="scroll-fade">
+  <h2 class="text-2xl font-serif text-primary font-bold mb-8 pb-2 border-b border-secondary/30">实用旅行信息</h2>
+  <div class="bg-white rounded-xl p-6 card-shadow mb-6">
+    <h3 class="font-bold text-primary mb-3">🚗 自驾交通须知</h3>
+    <ul class="text-sm text-gray-700 space-y-2">
+      <li>• 全程预留<strong>1-1.5h国庆堵车冗余</strong>，适配节假日路况</li>
+      <li>• 9.30茂兰直穿黄果树，零无效折返，动线最优</li>
+      <li>• 最后三日常驻龙洞堡，彻底杜绝误机风险</li>
+    </ul>
+  </div>
+  <div class="bg-white rounded-xl p-6 card-shadow mb-6">
+    <h3 class="font-bold text-primary mb-3">🏨 住宿规划</h3>
+    <ul class="text-sm text-gray-700 space-y-2">
+      <li>• 9.28-9.29：茂兰五眼桥民宿（徒步零距离）</li>
+      <li>• 9.30-10.01：黄果树镇酒店（紧邻景区）</li>
+      <li>• 10.02-10.04：贵阳龙洞堡机场酒店（返程兜底）</li>
+    </ul>
+  </div>
+  <div class="bg-white rounded-xl p-6 card-shadow">
+    <h3 class="font-bold text-primary mb-3">⚠️ 全局应急预案</h3>
+    <ul class="text-sm text-gray-700 space-y-2">
+      <li>• <strong>雨天预案</strong>：漂流改轻徒步，冰臼雨天禁止下河谷</li>
+      <li>• <strong>体力预案</strong>：所有加餐点位可随时跳过，休息优先</li>
+      <li>• <strong>堵车预案</strong>：优先保障核心体验，灵活舍弃次要打卡点</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="bg-primary text-white text-center py-10 text-sm mt-20">
+  <p>贵州9.28-10.05森系自驾路书 | C-Plus灵活定稿版</p>
+  <p class="mt-2 opacity-75">劳逸均衡 · 高容错 · 全程无忧山野之旅</p>
+</footer>
+
+<script>
+// 导航栏吸顶效果
+const navbar = document.getElementById('navbar')
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 80){
+    navbar.classList.add('nav-blur','shadow-md')
+  }else{
+    navbar.classList.remove('nav-blur','shadow-md')
+  }
+})
+
+// 滚动渐入动画
+const fadeEls = document.querySelectorAll('.scroll-fade')
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(item => {
+    if(item.isIntersecting) item.target.classList.add('show')
+  })
+},{threshold:0.1})
+fadeEls.forEach(el => observer.observe(el))
+</script>
+</body>
+</html>
