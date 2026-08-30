@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>贵州山野自驾之旅｜9.28-10.05沉浸式路书</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#2C5F44',
+        secondary: '#72A793'
+      },
+      fontFamily: {
+        serif: ['Georgia', 'serif'],
+        sans: ['system-ui', '-apple-system', 'sans-serif']
+      }
+    }
+  }
+}
+</script>
+<style type="text/tailwindcss">
+@layer utilities {
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+    /* 深色兜底：图片未加载时显示（不会被内联 style 的 background-image 覆盖） */
+    background-color: #151a23;
+  }
+  
+  /* 外链图片加载中的提示 - 位于遮罩之上、内容之下 */
+  .bg-loading-hint {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    pointer-events: none;
+    transition: opacity 1s ease;
+  }
+  .bg-loading-hint.hidden {
+    opacity: 0;
+  }
+  .bg-loading-hint span {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.2em;
+    animation: pulse 2s ease-in-out infinite;
+    text-shadow: 0 0 25px rgba(255,255,255,0.15);
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 0.7; }
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.5) 0%,
+      rgba(0,0,0,0.3) 40%,
+      rgba(0,0,0,0.6) 100%
+    );
+    z-index: 2;
+  }
+  .hero-overlay-dark {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.4) 0%,
+      rgba(0,0,0,0.25) 50%,
+      rgba(0,0,0,0.5) 100%
+    );
+    z-index: 2;
+  }
+  .scroll-fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.2,0,0.2,1);
+  }
+  .scroll-fade.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .section-divider {
+    height: 80px;
+    background: #0a0a0a;
+  }
+  /* Day2 本地图片 */
+  .day1-bg .hero-overlay-dark {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.25) 0%,
+      rgba(0,0,0,0.15) 50%,
+      rgba(0,0,0,0.35) 100%
+    );
+  }
+}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.4); border-radius: 5px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+html { scroll-behavior: smooth; }
+body { background: #0a0a0a; color: #f5f5f5; }
+</style>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-500 py-4">
+  <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="font-serif text-white font-bold text-xl tracking-wide cursor-pointer hover:text-white/80 transition-colors duration-300">GUIZHOU ITINERARY</a>
+    <div class="hidden md:flex gap-8 text-sm text-white/80">
+      <a href="#overview" class="hover:text-white transition-colors duration-300">行程总览</a>
+      <a href="#daylist" class="hover:text-white transition-colors duration-300">每日行程</a>
+      <a href="#gallery" class="hover:text-white transition-colors duration-300">景点图鉴</a>
+      <a href="#team" class="hover:text-white transition-colors duration-300">队友阵容</a>
+      <a href="#info" class="hover:text-white transition-colors duration-300">实用信息</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== 背景图位置 #1: Hero封面 ==================== -->
+<header class="hero-section" style="background-image: url('https://images.unsplash.com/photo-1586023281874-23b66b9ea530?w=2070&auto=format&fit=crop&q=80')">
+  <div class="bg-loading-hint" id="loading-hero"><span>GitHub 持续加载中......</span></div>
+  <div class="hero-overlay"></div>
+  <div class="relative z-10 text-white text-center px-6 max-w-4xl mx-auto scroll-fade show">
+    <h1 class="text-[clamp(2.5rem,7vw,4.5rem)] font-serif font-bold mb-4 leading-tight drop-shadow-2xl">贵州 · 山野</h1>
+    <p class="text-[clamp(1rem,2.5vw,1.4rem)] opacity-90 mb-8 font-light tracking-wider">9.28 - 10.05 | rivers' family</p>
+    <div class="flex flex-wrap justify-center gap-4 text-sm">
+      <span class="bg-white/15 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20">🌲 森林穿越</span>
+      <span class="bg-white/15 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20">💧 溪流溯溪</span>
+      <span class="bg-white/15 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20">🌊 瀑布秘境</span>
+      <span class="bg-white/15 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/20">🚣 峡谷漂流</span>
+    </div>
+    <div class="mt-12 animate-bounce"><i class="fa fa-chevron-down text-2xl opacity-60"></i></div>
+  </div>
+</header>
+
+<!-- ==================== 背景图位置 #2: 行程总览 ==================== -->
+<section id="overview" class="hero-section min-h-screen" style="background-image: url('https://images.pexels.com/photos/38964584/pexels-photo-38964584.jpeg?auto=compress&cs=tinysrgb&w=1920')">
+  <div class="bg-loading-hint" id="loading-overview"><span>GitHub 持续加载中......</span></div>
+  <div class="hero-overlay-dark"></div>
+  <div class="relative z-10 w-full max-w-5xl mx-auto px-6 py-24 scroll-fade">
+    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-12 text-center text-white">行程总览 Overview</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+      <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 text-center border border-white/25">
+        <p class="text-4xl font-bold text-white mb-2">8天8晚</p>
+        <p class="text-sm text-white/70">全程深度自驾</p>
+      </div>
+      <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 text-center border border-white/25">
+        <p class="text-4xl font-bold text-white mb-2">4大核心</p>
+        <p class="text-sm text-white/70">森系户外体验</p>
+      </div>
+      <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 text-center border border-white/25">
+        <p class="text-4xl font-bold text-white mb-2">最优动线</p>
+        <p class="text-sm text-white/70">零无效折返</p>
+      </div>
+      <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 text-center border border-white/25">
+        <p class="text-4xl font-bold text-white mb-2">零误机</p>
+        <p class="text-sm text-white/70">机场兜底返程</p>
+      </div>
+    </div>
+    <div class="bg-white/5 backdrop-blur-md rounded-2xl p-8 md:p-10 border border-white/25">
+      <h3 class="font-serif text-xl text-white font-bold mb-6">📌 核心设定</h3>
+      <ul class="text-white/90 space-y-4 text-base leading-relaxed">
+        <li><strong class="text-white">出行周期</strong>：<span class="text-white/80">9.28 中午贵阳取车 → 10.5 15:00贵阳龙洞堡机场返程</span></li>
+        <li><strong class="text-white">必玩核心</strong>：<span class="text-white/80">茂兰漏斗森林穿越、关岭冰臼溯溪、黄果树大瀑布、南江大峡谷集体漂流</span></li>
+        <li><strong class="text-white">组队规则</strong>：<span class="text-white/80">10.1关岭全员汇合｜10.3统一集体活动｜10.4自由分流休整</span></li>
+        <li><strong class="text-white">体力分级</strong>：<span class="text-white/80">🔴高强度｜🟡中等｜🟢松弛</span></li>
+        <li><strong class="text-white">国庆容错</strong>：<span class="text-white/80">所有车程预留1~1.5h堵车冗余，行程高灵活可调</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== 每日行程区域 ==================== -->
+<section id="daylist">
+
+  <!-- ==================== 背景图位置 #3: Day1 ==================== -->
+  <div class="hero-section min-h-screen day1-bg" style="background-image: url('images/day1.jpg'); background-position: center 70%; background-size: cover;">
+    <div class="hero-overlay-dark"></div>
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-6 py-24 scroll-fade">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="bg-emerald-500/90 text-white text-sm px-5 py-2 rounded-full font-medium backdrop-blur-sm">Day1 9.28</span>
+        <span class="text-emerald-400 text-base">🟢 松弛</span>
+      </div>
+      <h3 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">贵阳取车 → 茂兰 · 森林兜风</h3>
+      <p class="text-lg text-white/80 mb-8">290km｜国庆预留5-6h车程，纯赶路休整，无徒步压力</p>
+      <div class="bg-black/10 backdrop-blur-md rounded-2xl p-8 border border-white/25">
+        <ul class="text-white/90 space-y-4 text-base leading-relaxed">
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>中午贵阳取车，采购全套户外溯溪物资</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>下午自驾南下荔波，傍晚入住茂兰民宿</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>保护区乡道小众兜风，沉浸式喀斯特山野风光</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>对接次日向导，早睡储备徒步体力</span></li>
+        </ul>
+        <div class="mt-8 pt-6 border-t border-white/20 text-white/80">
+          <p><strong class="text-white">住宿</strong>：茂兰五眼桥民宿｜<strong class="text-white">美食</strong>：布依族农家菜、土鸡酸汤</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 背景图位置 #4: Day2 ==================== -->
+  <div class="hero-section min-h-screen" style="background-image: url('images/day2.jpg'); background-position: center bottom; background-size: cover;">
+    <div class="hero-overlay-dark"></div>
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-6 py-24 scroll-fade">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="bg-emerald-500/90 text-white text-sm px-5 py-2 rounded-full font-medium backdrop-blur-sm">Day2 9.29</span>
+        <span class="text-red-400 text-base">🔴 高强度徒步</span>
+      </div>
+      <h3 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">茂兰漏斗森林 · 原始荒野穿越</h3>
+      <p class="text-lg text-white/80 mb-8">12km原始野路｜6-7h深度穿越，大部分区域无手机信号</p>
+      <div class="bg-black/10 backdrop-blur-md rounded-2xl p-8 border border-white/25">
+        <ul class="text-white/90 space-y-4 text-base leading-relaxed">
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>07:30本地向导带队，纯原生漏斗森林穿越</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>避开网红流水线，沉浸式小众秘境体验</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>自备路餐水源，16点前全员返程民宿</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>傍晚轻松休整，不消耗剩余体力</span></li>
+        </ul>
+        <div class="mt-8 pt-6 border-t border-white/20 text-white/80">
+          <p><strong class="text-white">住宿</strong>：续住茂兰民宿｜<strong class="text-white">美食</strong>：农家简餐、徒步路餐</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 背景图位置 #5: Day3 ==================== -->
+  <div class="hero-section min-h-screen" style="background-image: url('images/day3.jpg'); background-position: center; background-size: cover;">
+    <div class="hero-overlay-dark"></div>
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-6 py-24 scroll-fade">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="bg-emerald-500/90 text-white text-sm px-5 py-2 rounded-full font-medium backdrop-blur-sm">Day3 9.30</span>
+        <span class="text-yellow-400 text-base">🟡 赶路休整</span>
+      </div>
+      <h3 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">茂兰直穿黄果树 · 零无效折返</h3>
+      <p class="text-lg text-white/80 mb-8">340km跨区域直行｜国庆预留6-6.5h，纯休整无游玩</p>
+      <div class="bg-black/10 backdrop-blur-md rounded-2xl p-8 border border-white/25">
+        <ul class="text-white/90 space-y-4 text-base leading-relaxed">
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>清晨错峰出发，分段行驶高频休息防疲劳</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>东南直穿贵州西部，规避贵阳无效折返路程</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>傍晚抵达黄果树镇区，静养蓄力后续行程</span></li>
+        </ul>
+        <div class="mt-8 pt-6 border-t border-white/20 text-white/80">
+          <p><strong class="text-white">住宿</strong>：黄果树镇｜<strong class="text-white">美食</strong>：本地土菜、贵州家常小炒</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 背景图位置 #6: Day4 ==================== -->
+  <div class="hero-section min-h-screen" style="background-image: url('images/day4.jpg'); background-position: center; background-size: cover;">
+    <div class="hero-overlay-dark"></div>
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-6 py-24 scroll-fade">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="bg-emerald-500/90 text-white text-sm px-5 py-2 rounded-full font-medium backdrop-blur-sm">Day4 10.01</span>
+        <span class="text-yellow-400 text-base">🟡 中等强度｜全员汇合</span>
+      </div>
+      <h3 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">关岭冰臼溯溪 + 滴水滩瀑布远眺</h3>
+      <p class="text-lg text-white/80 mb-8">8-10km溯溪徒步｜双车正式汇合，小众野生秘境打卡</p>
+      <div class="bg-black/10 backdrop-blur-md rounded-2xl p-8 border border-white/25">
+        <ul class="text-white/90 space-y-4 text-base leading-relaxed">
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>小伙伴自驾至关岭，两队全员汇合集结</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>万年冰川冰臼秘境，果冻色溪流溯溪徒步</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>关兴公路峡谷自驾，俯瞰北盘江大峡谷全景</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>可选滴水滩高位观景，打卡410米超级叠瀑</span></li>
+        </ul>
+        <div class="mt-8 pt-6 border-t border-white/20 text-white/80">
+          <p><strong class="text-white">住宿</strong>：黄果树镇续住｜<strong class="text-white">美食</strong>：酸汤鱼、本地河鲜</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 背景图位置 #7: Day5 ==================== -->
+  <div class="hero-section min-h-screen" style="background-image: url('images/day5.jpg'); background-position: center; background-size: cover;">
+    <div class="hero-overlay-dark"></div>
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-6 py-24 scroll-fade">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="bg-emerald-500/90 text-white text-sm px-5 py-2 rounded-full font-medium backdrop-blur-sm">Day5 10.02</span>
+        <span class="text-yellow-400 text-base">🟡 中等强度</span>
+      </div>
+      <h3 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">黄果树深度游玩 · 傍晚返程贵阳</h3>
+      <p class="text-lg text-white/80 mb-8">4-5h景区徒步｜130km返程，预留国庆晚高峰堵车时间</p>
+      <div class="bg-black/10 backdrop-blur-md rounded-2xl p-8 border border-white/25">
+        <ul class="text-white/90 space-y-4 text-base leading-relaxed">
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>07:00早入园避开国庆人流峰值</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>标准最优动线：陡坡塘→天星桥后半段→大瀑布水帘洞</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>15-16点错峰出景区，休整补给</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>傍晚返程龙洞堡，锁定机场兜底住宿区位</span></li>
+        </ul>
+        <div class="mt-8 pt-6 border-t border-white/20 text-white/80">
+          <p><strong class="text-white">住宿</strong>：贵阳龙洞堡酒店｜<strong class="text-white">美食</strong>：夜市小吃、地摊火锅</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 背景图位置 #8: Day6 ==================== -->
+  <div class="hero-section min-h-screen" style="background-image: url('images/day6.jpg'); background-position: center bottom; background-size: cover;">
+    <div class="hero-overlay-dark"></div>
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-6 py-24 scroll-fade">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="bg-emerald-500/90 text-white text-sm px-5 py-2 rounded-full font-medium backdrop-blur-sm">Day6 10.03</span>
+        <span class="text-yellow-400 text-base">🟡 全员集体玩水日</span>
+      </div>
+      <h3 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">南江大峡谷激情漂流 · 开阳灵活加餐</h3>
+      <p class="text-lg text-white/80 mb-8">本次旅行唯一全员统一集体项目，松弛治愈玩水体验</p>
+      <div class="bg-black/10 backdrop-blur-md rounded-2xl p-8 border border-white/25">
+        <ul class="text-white/90 space-y-4 text-base leading-relaxed">
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>优先保障完整2.5h激情漂流核心体验</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>12:30前抵达，规避15点停票截止时间</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>时间充裕可顺路打卡开阳十里画廊古寨</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>雨天自动替换轻徒步预案，行程不浪费</span></li>
+        </ul>
+        <div class="mt-8 pt-6 border-t border-white/20 text-white/80">
+          <p><strong class="text-white">住宿</strong>：龙洞堡续住｜<strong class="text-white">美食</strong>：景区农家菜、开阳本地风味</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 背景图位置 #9: Day7 ==================== -->
+  <div class="hero-section min-h-screen" style="background-image: url('images/day7.jpg'); background-position: center; background-size: cover;">
+    <div class="hero-overlay-dark"></div>
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-6 py-24 scroll-fade">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="bg-emerald-500/90 text-white text-sm px-5 py-2 rounded-full font-medium backdrop-blur-sm">Day7 10.04</span>
+        <span class="text-emerald-400 text-base">🟢 自由分流休整</span>
+      </div>
+      <h3 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">贵阳松弛休整 · 自由安排日</h3>
+      <p class="text-lg text-white/80 mb-8">集体行程正式结束，全员自由活动，储能准备返程</p>
+      <div class="bg-black/10 backdrop-blur-md rounded-2xl p-8 border border-white/25">
+        <ul class="text-white/90 space-y-4 text-base leading-relaxed">
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>先行部队休整行李、储备返程体力</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>小伙伴可自主分流，自由安排出行</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>可选青岩古镇、双龙镇、多彩贵州城近郊游玩</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>可纯躺平逛吃贵阳特色美食</span></li>
+        </ul>
+        <div class="mt-8 pt-6 border-t border-white/20 text-white/80">
+          <p><strong class="text-white">住宿</strong>：龙洞堡机场酒店｜<strong class="text-white">美食</strong>：肠旺面、丝娃娃、香酥鸭</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 背景图位置 #10: Day8 ==================== -->
+  <div class="hero-section min-h-screen" style="background-image: url('images/day8.jpg'); background-position: center; background-size: cover;">
+    <div class="hero-overlay-dark"></div>
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-6 py-24 scroll-fade">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="bg-emerald-500/90 text-white text-sm px-5 py-2 rounded-full font-medium backdrop-blur-sm">Day8 10.05</span>
+        <span class="text-emerald-400 text-base">🟢 从容返程</span>
+      </div>
+      <h3 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">零风险返程 · 顺利登机</h3>
+      <p class="text-lg text-white/80 mb-8">无赶路、无游玩、全程松弛，彻底规避误机风险</p>
+      <div class="bg-black/10 backdrop-blur-md rounded-2xl p-8 border border-white/25">
+        <ul class="text-white/90 space-y-4 text-base leading-relaxed">
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>11:30前完成全部还车、验车手续</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>从容前往航站楼，预留充足登机缓冲时间</span></li>
+          <li class="flex items-start gap-3"><span class="text-emerald-400 mt-1">✅</span><span>完美适配15:00起飞航班，全程稳妥兜底</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== 背景图位置 #11: 景点图鉴 ==================== -->
+<section id="gallery" class="hero-section min-h-screen" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop')">
+  <div class="bg-loading-hint" id="loading-gallery"><span>GitHub 持续加载中......</span></div>
+  <div class="hero-overlay-dark"></div>
+  <div class="relative z-10 w-full max-w-5xl mx-auto px-6 py-24 scroll-fade">
+    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-14 text-center text-white">核心景点图鉴</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/25 group hover:bg-white/10 transition-all duration-300">
+        <div class="h-56 overflow-hidden">
+          <img src="images/tb.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="茂兰漏斗森林">
+        </div>
+        <div class="p-6">
+          <h3 class="font-bold text-xl text-white mb-3">茂兰漏斗森林</h3>
+          <p class="text-white/80 text-base leading-relaxed">贵州顶级原生喀斯特森林，漏斗洼地地貌，无商业化雕琢，沉浸式原始荒野穿越体验。</p>
+        </div>
+      </div>
+      <div class="bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/25 group hover:bg-white/10 transition-all duration-300">
+        <div class="h-56 overflow-hidden">
+          <img src="images/bj.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="关岭冰臼">
+        </div>
+        <div class="p-6">
+          <h3 class="font-bold text-xl text-white mb-3">关岭冰臼</h3>
+          <p class="text-white/80 text-base leading-relaxed">万年冰川遗迹野生峡谷，果冻色清澈溪流，原生态溯溪秘境，游客极少、出片率极高。</p>
+        </div>
+      </div>
+      <div class="bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/25 group hover:bg-white/10 transition-all duration-300">
+        <div class="h-56 overflow-hidden">
+          <img src="images/hgs.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="黄果树瀑布">
+        </div>
+        <div class="p-6">
+          <h3 class="font-bold text-xl text-white mb-3">黄果树大瀑布</h3>
+          <p class="text-white/80 text-base leading-relaxed">国内顶级喀斯特瀑布群，三大景区连片游玩，水帘洞沉浸式打卡，经典地标山水风光。</p>
+        </div>
+      </div>
+      <div class="bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/25 group hover:bg-white/10 transition-all duration-300">
+        <div class="h-56 overflow-hidden">
+          <img src="images/pl.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="南江大峡谷">
+        </div>
+        <div class="p-6">
+          <h3 class="font-bold text-xl text-white mb-3">南江大峡谷漂流</h3>
+          <p class="text-white/80 text-base leading-relaxed">贵阳周边优质峡谷漂流，山林环抱河道，团队互动性极强，治愈旅途疲惫。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== 序幕 - 过渡衔接页 ==================== -->
+<section id="prologue" class="min-h-[70vh] relative overflow-hidden flex items-center justify-center" style="background: linear-gradient(180deg, #0a0a0a 0%, #0a0a1a 40%, #1a0a2e 100%);">
+  <!-- 装饰性网格 -->
+  <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+  <!-- 顶部微光 -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-emerald-500/[0.03] rounded-full blur-3xl"></div>
+
+  <div class="relative z-10 text-center px-6 max-w-2xl mx-auto scroll-fade">
+    <!-- 小标签 -->
+    <p class="text-emerald-400/60 text-xs font-mono tracking-[0.25em] mb-6 uppercase">-- But wait, there's more --</p>
+
+    <!-- 主文字 -->
+    <h2 class="text-2xl md:text-3xl text-white/90 font-light leading-relaxed mb-6">
+      路书只是纸面上的计划，<br class="hidden md:block"/>
+      真正的冒险，是<span class="text-white font-medium">和你一起出发的人</span>。
+    </h2>
+
+    <p class="text-white/40 text-base leading-relaxed mb-10">
+      六位伙伴已集结完毕，每个人都是这场旅程不可或缺的一片拼图。<br/>
+      滑动下方，认识你的队友。
+    </p>
+
+    <!-- 下滑提示 -->
+    <div class="flex flex-col items-center gap-3">
+      <div class="w-px h-8 bg-gradient-to-b from-emerald-500/50 to-transparent"></div>
+      <div class="flex items-center gap-2 text-white/30 text-xs font-mono tracking-wider animate-bounce">
+        <span>SCROLL DOWN</span>
+        <span class="text-emerald-500/50">↓</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 队友阵容 - 游戏角色选择风格 ==================== -->
+<section id="team" class="min-h-screen relative overflow-hidden" style="background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a2e 100%);">
+  <!-- 装饰性网格背景 -->
+  <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+  
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 py-24 scroll-fade">
+    <!-- 标题区 -->
+    <div class="text-center mb-16">
+      <p class="text-emerald-400 text-sm font-mono tracking-[0.3em] mb-3 uppercase">-- Select Your Character --</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4" style="font-family: 'Impact', 'Arial Black', sans-serif; letter-spacing: 0.05em; text-shadow: 0 0 30px rgba(34,197,94,0.3), 0 4px 0 #064e3b;">请选择您的角色</h2>
+      <p class="text-white/50 text-sm">6位冒险者 · 已集结完毕 · READY TO GO</p>
+      <div class="flex items-center justify-center gap-3 mt-6">
+        <span class="w-16 h-[2px] bg-gradient-to-r from-transparent to-emerald-500"></span>
+        <span class="text-emerald-500 text-xs">◆ ◆ ◆</span>
+        <span class="w-16 h-[2px] bg-gradient-to-l from-transparent to-emerald-500"></span>
+      </div>
+    </div>
+
+    <!-- 角色选择网格 -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+
+      <!-- ========== 角色1: River ========== -->
+      <div class="character-card group relative rounded-xl border-2 border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent backdrop-blur-sm p-5 cursor-pointer transition-all duration-300 hover:border-emerald-400/60 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)] hover:-translate-y-2">
+        <div class="absolute -top-3 left-4 px-3 py-0.5 bg-emerald-500/90 rounded-full text-[10px] font-bold text-white tracking-wider">P1</div>
+        <!-- Q版全身小人 -->
+        <div class="flex justify-center mb-3 group-hover:scale-105 transition-transform duration-300">
+          <svg width="80" height="120" viewBox="0 0 80 120" class="drop-shadow-lg">
+            <!-- 身体 -->
+            <rect x="25" y="65" width="30" height="35" rx="8" fill="#059669"/>
+            <rect x="28" y="95" width="10" height="20" rx="4" fill="#047857"/>
+            <rect x="42" y="95" width="10" height="20" rx="4" fill="#047857"/>
+            <!-- 头 -->
+            <ellipse cx="40" cy="45" rx="22" ry="24"="#FCD5B8"/>
+            <!-- 耳朵 -->
+            <ellipse cx="17" cy="46" rx="4" ry="5" fill="#F5C09A"/>
+            <ellipse cx="63" cy="46" rx="4" ry="5" fill="#F5C09A"/>
+            <!-- 美食前刺发型 -->
+            <path d="M18 38 Q20 12 40 10 Q60 12 62 38 Q58 28 40 26 Q22 28 18 38Z" fill="#1a1a2e"/>
+            <path d="M32 14 L34 26 L30 18 Z" fill="#1a1a2e"/>
+            <path d="M40 10 L41 25 L39 16 Z" fill="#1a1a2e"/>
+            <path d="M48 14 L46 26 L50 18 Z" fill="#1a1a2e"/>
+            <!-- 眼睛 -->
+            <ellipse cx="31" cy="48" rx="3" ry="3.5" fill="#1a1a2e"/>
+            <ellipse cx="49" cy="48" rx="3" ry="3.5" fill="#1a1a2e"/>
+            <circle cx="32" cy="47" r="1" fill="white"/>
+            <circle cx="50" cy="47" r="1" fill="white"/>
+            <!-- 嘴巴 -->
+            <path d="M36 57 Q40 61 44 57" stroke="#c97878" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <!-- 手臂 -->
+            <rect x="14" y="70" width="10" height="22" rx="5" fill="#059669" transform="rotate(-10 19 81)"/>
+            <rect x="56" y="70" width="10" height="22" rx="5" fill="#059669" transform="rotate(10 61 81)"/>
+          </svg>
+        </div>
+        <h3 class="text-center text-lg font-bold text-white mb-1 tracking-wide">River</h3>
+        <p class="text-center text-emerald-400 text-xs font-mono mb-3">领航员 · 总路线规划师</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">规划</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[98%] bg-gradient-to-r from-emerald-500 to-emerald-300 rounded-full"></div></div></div>
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">导航</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[95%] bg-gradient-to-r from-blue-500 to-blue-300 rounded-full"></div></div></div>
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">决策</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[92%] bg-gradient-to-r from-yellow-500 to-yellow-300 rounded-full"></div></div></div>
+        </div>
+        <p class="text-center text-white/40 text-[11px] mt-3 italic">"路线规划大师，绝不迷路"</p>
+        <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="box-shadow: inset 0 0 30px rgba(34,197,94,0.1);"></div>
+      </div>
+
+      <!-- ========== 角色2: Yijun ========== -->
+      <div class="character-card group relative rounded-xl border-2 border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent backdrop-blur-sm p-5 cursor-pointer transition-all duration-300 hover:border-cyan-400/60 hover:shadow-[0_0_30px_rgba(34,211,238,0.15)] hover:-translate-y-2">
+        <div class="absolute -top-3 left-4 px-3 py-0.5 bg-cyan-500/90 rounded-full text-[10px] font-bold text-white tracking-wider">P2</div>
+        <div class="flex justify-center mb-3 group-hover:scale-105 transition-transform duration-300">
+          <svg width="80" height="120" viewBox="0 0 80 120" class="drop-shadow-lg">
+            <!-- 身体 -连衣裙 -->
+            <path d="M27 65 L53 65 L58 100 L22 100 Z" fill="#06b6d4" rx="4"/>
+            <rect x="29" y="98" width="9" height="17" rx="4" fill="#FFE4D0"/>
+            <rect x="42" y="98" width="9" height="17" rx="4" fill="#FFE4D0"/>
+            <!-- 头 -->
+            <ellipse cx="40" cy="45" rx="21" ry="23" "#FCD5B8"/>
+            <ellipse cx="40" cy="45" rx="21" ry="23" fill="#FCD5B8"/>
+            <!-- 耳朵（被头发遮住一点） -->
+            <ellipse cx="18" cy="46" rx="3.5" ry="4.5" fill="#F5C09A"/>
+            <ellipse cx="62" cy="46" rx="3.5" ry="4.5" fill="#F5C09A"/>
+            <!-- 辫子发型 + 左右垂发 -->
+            <path d="M18 42 Q16 20 40 16 Q64 20 62 42 Q58 30 40 28 Q22 30 18 42Z" fill="#2d1b0e"/>
+            <!-- 左辫子 -->
+            <ellipse cx="10" cy="55" rx="6" ry="16" fill="#2d1b0e" transform="rotate(15 10 55)"/>
+            <!-- 右辫子 -->
+            <ellipse cx="70" cy="55" rx="6" ry="16" fill="#2d1b0e" transform="rotate(-15 70 55)"/>
+            <!-- 左边垂下的刘海 -->
+            <path d="M22 28 Q18 42 20 52 Q23 44 26 32Z" fill="#2d1b0e"/>
+            <!-- 右边垂下的刘海 -->
+            <path d="M58 28 Q62 42 60 52 Q57 44 54 32Z" fill="#2d1b0e"/>
+            <!-- 眼睛（大眼睛女孩） -->
+            <ellipse cx="31" cy="47" rx="3.5" ry="4" fill="#1a1a2e"/>
+            <ellipse cx="49" cy="47" rx="3.5" ry="4" fill="#1a1a2e"/>
+            <circle cx="32" cy="45.5" r="1.2" fill="white"/>
+            <circle cx="50" cy="45.5" r="1.2" fill="white"/>
+            <!-- 腮红 -->
+            <ellipse cx="25" cy="53" rx="4" ry="2.5" fill="#ffb6c1" opacity="0.5"/>
+            <ellipse cx="55" cy="53" rx="4" ry="2.5" fill="#ffb6c1" opacity="0.5"/>
+            <!-- 微笑 -->
+            <path d="M37 56 Q40 59 43 56" stroke="#e57373" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <!-- 手臂 -->
+            <rect x="16" y="68" width="8" height="20" rx="4" fill="#06b6d4" transform="rotate(-8 20 78)"/>
+            <rect x="56" y="68" width="8" height="20" rx="4" fill="#06b6d4" transform="rotate(8 60 78)"/>
+          </svg>
+        </div>
+        <h3 class="text-center text-lg font-bold text-white mb-1 tracking-wide">YiJun</h3>
+        <p class="text-center text-cyan-400 text-xs font-mono mb-3">探险少女 · 规划师的规划师</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">可爱</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[100%] bg-gradient-to-r from-pink-500 to-pink-300 rounded-full"></div></div></div>
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">体能</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[75%] bg-gradient-to-r from-orange-500 to-orange-300 rounded-full"></div></div></div>
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">勇气</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[85%] bg-gradient-to-r from-red-500 to-red-300 rounded-full"></div></div></div>
+        </div>
+        <p class="text-center text-white/40 text-[11px] mt-3 italic">"啦啦啦~种太阳"</p>
+        <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="box-shadow: inset 0 0 30px rgba(34,211,238,0.1);"></div>
+      </div>
+
+      <!-- ========== 角色3: Kai ========== -->
+      <div class="character-card group relative rounded-xl border-2 border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent backdrop-blur-sm p-5 cursor-pointer transition-all duration-300 hover:border-orange-400/60 hover:shadow-[0_0_30px_rgba(251,146,60,0.15)] hover:-translate-y-2">
+        <div class="absolute -top-3 left-4 px-3 py-0.5 bg-orange-500/90 rounded-full text-[10px] font-bold text-white tracking-wider">P3</div>
+        <div class="flex justify-center mb-3 group-hover:scale-105 transition-transform duration-300">
+          <svg width="80" height="120" viewBox="0 0 80 120" class="drop-shadow-lg">
+            <!-- 身体 -->
+            <rect x="24" y="65" width="32" height="36" rx="8" fill="#ea580c"/>
+            <rect x="26" y="97" width="11" height="18" rx="4" fill="#c2410c"/>
+            <rect x="43" y="97" width="11" height="18" rx="4" fill="#c2410c"/>
+            <!-- 头 - 深肤色 -->
+            <ellipse cx="40" cy="44" rx="23" ry="25" fill="#E8B896"/>
+            <ellipse cx="17" cy="45" rx="4" ry="5" fill="#D4A57A"/>
+            <ellipse cx="63" cy="45" rx="4" ry="5" fill="#D4A57A"/>
+            <!-- 坚挺坚硬的发型 - 刺猬头 -->
+            <path d="M16 40 L18 14 Q40 6 62 14 L64 40 Q60 26 40 24 Q20 26 16 40Z" fill="#0f172a"/>
+            <path d="M24 12 L26 26 L22 16 Z" fill="#0f172a"/>
+            <path d="M33 8 L34 24 L32 13 Z" fill="#0f172a"/>
+            <path d="M40 6 L41 22 L40 11 Z" fill="#0f172a"/>
+            <path d="M47 8 L46 24 L48 13 Z" fill="#0f172a"/>
+            <path d="M56 12 L54 26 L58 16 Z" fill="#0f172a"/>
+            <!-- 眉毛（坚毅） -->
+            <line x1="26" y1="40" x2="34" y2="38.5" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+            <line x1="54" y1="38.5" x2="46" y2="40" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+            <!-- 眼睛 -->
+            <ellipse cx="31" cy="47" rx="3" ry="3.5" fill="#0f172a"/>
+            <ellipse cx="49" cy="47" rx="3" ry="3.5" fill="#0f172a"/>
+            <circle cx="32" cy="46" r="1" fill="white"/>
+            <circle cx="50" cy="46" r="1" fill="white"/>
+            <!-- 黑框眼镜（帅气方框款） -->
+            <rect x="23" y="40" width="15" height="11" rx="2.5" stroke="#1a1a2e" stroke-width="2" fill="none"/>
+            <rect x="42" y="40" width="15" height="11" rx="2.5" stroke="#1a1a2e" stroke-width="2" fill="none"/>
+            <line x1="38" y1="45.5" x2="42" y2="45.5" stroke="#1a1a2e" stroke-width="1.8"/>
+            <line x1="23" y1="44" x2="17" y2="42" stroke="#1a1a2e" stroke-width="1.5"/>
+            <line x1="57" y1="44" x2="63" y2="42" stroke="#1a1a2e" stroke-width="1.5"/>
+            <!-- 坚定嘴角 -->
+            <line x1="35" y1="57" x2="45" y2="57" stroke="#c97878" stroke-width="1.8" stroke-linecap="round"/>
+            <!-- 手臂（强壮） -->
+            <rect x="12" y="68" width="11" height="24" rx="5" fill="#ea580c" transform="rotate(-12 17 80)"/>
+            <rect x="57" y="68" width="11" height="24" rx="5" fill="#ea580c" transform="rotate(12 63 80)"/>
+          </svg>
+        </div>
+        <h3 class="text-center text-lg font-bold text-white mb-1 tracking-wide">Kai</h3>
+        <p class="text-center text-orange-400 text-xs font-mono mb-3">老司机 · 探路先锋 · 团队勇士</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">驾驶</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[100%] bg-gradient-to-r from-orange-500 to-orange-300 rounded-full"></div></div></div>
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">体能</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[96%] bg-gradient-to-r from-red-500 to-red-300 rounded-full"></div></div></div>
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">探路</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[94%] bg-gradient-to-r from-yellow-500 to-yellow-300 rounded-full"></div></div></div>
+        </div>
+        <p class="text-center text-white/40 text-[11px] mt-3 italic">"秋名山车神，山路保障"</p>
+        <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="box-shadow: inset 0 0 30px rgba(251,146,60,0.1);"></div>
+      </div>
+
+      <!-- ========== 角色4: Rain ========== -->
+      <div class="character-card group relative rounded-xl border-2 border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent backdrop-blur-sm p-5 cursor-pointer transition-all duration-300 hover:border-yellow-400/60 hover:shadow-[0_0_30px_rgba(250,204,21,0.15)] hover:-translate-y-2">
+        <div class="absolute -top-3 left-4 px-3 py-0.5 bg-yellow-400/90 rounded-full text-[10px] font-bold text-black tracking-wider">P4</div>
+        <div class="flex justify-center mb-3 group-hover:scale-105 transition-transform duration-300">
+          <svg width="80" height="120" viewBox="0 0 80 120" class="drop-shadow-lg">
+            <!-- 身体 - 活力装 -->
+            <rect x="25" y="65" width="30" height="35" rx="8" fill="#eab308"/>
+            <rect x="27" y="97" width="10" height="18" rx="4" fill="#ca8a04"/>
+            <rect x="43" y="97" width="10" height="18" rx="4" fill="#ca8a04"/>
+            <!-- 头 - 冷白皮 -->
+            <ellipse cx="40" cy="44" rx="21" ry="23" fill="#FFF0E8"/>
+            <ellipse cx="18" cy="45" rx="4" ry="5" fill="#FFE4Dc"/>
+            <ellipse cx="62" cy="45" rx="4" ry="5" fill="#FFE4Dc"/>
+            <!-- 中式少女单边辫子发型 - 乌黑长发 -->
+            <path d="M17 43 Q20 18 40 15 Q58 18 61 43 Q56 32 40 29 Q24 32 17 43Z" fill="#1a1a2e"/>
+            <!-- 齐刘海（中式空气刘海） -->
+            <path d="M19 36 Q25 28 33 34 Q28 30 22 35Z" fill="#1a1a2e"/>
+            <path d="M47 34 Q55 28 61 36 Q58 35 52 30Z" fill="#1a1a2e"/>
+            <path d="M33 32 Q40 27 47 32 Q40 29 33 32Z" fill="#1a1a2e"/>
+            <!-- 右侧低马尾长辫（中式温婉风） -->
+            <path d="M58 42 Q68 48 70 65 Q72 80 68 92 Q66 82 66 68 Q64 54 58 46Z" fill="#1a1a2e"/>
+            <!-- 辫子编织纹理 -->
+            <line x1="62" y1="52" x2="69" y2="58" stroke="#0f172a" stroke-width="0.8" opacity="0.3"/>
+            <line x1="63" y1="62" x2="70" y2="68" stroke="#0f172a" stroke-width="0.8" opacity="0.3"/>
+            <line x1="64" y1="72" x2="69" y2="78" stroke="#0f172a" stroke-width="0.8" opacity="0.3"/>
+            <!-- 发绳（中国结风格） -->
+            <circle cx="67" cy="56" r="2.5" fill="#e11d48"/>
+            <circle cx="67" cy="56" r="1.5" fill="#fda4af"/>
+            <!-- 大大的闪亮眼睛 -->
+            <ellipse cx="30" cy="46" rx="4" ry="4.5" fill="#1a1a2e"/>
+            <ellipse cx="50" cy="46" rx="4" ry="4.5" fill="#1a1a2e"/>
+            <circle cx="31.5" cy="44.5" r="1.5" fill="white"/>
+            <circle cx="51.5" cy="44.5" r="1.5" fill="white"/>
+            <circle cx="30.5" cy="47" r="0.8" fill="white" opacity="0.6"/>
+            <circle cx="50.5" cy="47" r="0.8" fill="white" opacity="0.6"/>
+            <!-- 开心大笑 -->
+            <path d="M33 55 Q40 63 47 55" stroke="#e57373" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- 腮红（兴奋） -->
+            <ellipse cx="23" cy="52" rx="4" ry="2.5" fill="#ff9999" opacity="0.5"/>
+            <ellipse cx="57" cy="52" rx="4" ry="2.5" fill="#ff9999" opacity="0.5"/>
+            <!-- 活泼手势 -->
+            <rect x="12" y="66" width="9" height="22" rx="4" fill="#eab308" transform="rotate(-25 16 77)"/>
+            <rect x="59" y="66" width="9" height="22" rx="4" fill="#eab308" transform="rotate(25 63 77)"/>
+            <!-- 小手挥动 -->
+            <circle cx="8" cy="64" r="5" fill="#FFF0E8"/>
+            <circle cx="72" cy="64" r="5" fill="#FFF0E8"/>
+          </svg>
+        </div>
+        <h3 class="text-center text-lg font-bold text-white mb-1 tracking-wide">Rain</h3>
+        <p class="text-center text-yellow-400 text-xs font-mono mb-3">古灵精怪 · 气氛担当</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">活力</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[100%] bg-gradient-to-r from-pink-500 to-pink-300 rounded-full"></div></div></div>
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">笑声</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[100%] bg-gradient-to-r from-lime-500 to-lime-300 rounded-full"></div></div></div>
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">元气</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[95%] bg-gradient-to-r from-fuchsia-500 to-fuchsia-300 rounded-full"></div></div></div>
+        </div>
+        <p class="text-center text-white/40 text-[11px] mt-3 italic">"有我在就不会冷场！"</p>
+        <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="box-shadow: inset 0 0 30px rgba(250,204,21,0.1);"></div>
+      </div>
+
+      <!-- ========== 角色5: 书记 ========== -->
+      <div class="character-card group relative rounded-xl border-2 border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent backdrop-blur-sm p-5 cursor-pointer transition-all duration-300 hover:border-violet-400/60 hover:shadow-[0_0_30px_rgba(139,92,246,0.15)] hover:-translate-y-2">
+        <div class="absolute -top-3 left-4 px-3 py-0.5 bg-violet-500/90 rounded-full text-[10px] font-bold text-white tracking-wider">P5</div>
+        <div class="flex justify-center mb-3 group-hover:scale-105 transition-transform duration-300">
+          <svg width="80" height="120" viewBox="0 0 80 120" class="drop-shadow-lg">
+            <!-- 身体 - 警长制服 -->
+            <rect x="25" y="65" width="30" height="35" rx="8" fill="#1e3a5f"/>
+            <!-- 警徽/胸章 -->
+            <polygon points="40,70 43,75 40,80 37,75" fill="#fbbf24"/>
+            <circle cx="40" cy="75" r="2" fill="#1e3a5f"/>
+            <rect x="27" y="96" width="10" height="19" rx="4" fill="#152a45"/>
+            <rect x="43" y="96" width="10" height="19" rx="4" fill="#152a45"/>
+            <!-- 头 - 警长脸型 -->
+            <ellipse cx="40" cy="44" rx="21" ry="24" fill="#F5D0B5"/>
+            <ellipse cx="18" cy="45" rx="3.5" ry="5" fill="#E8C4A8"/>
+            <ellipse cx="62" cy="45" rx="3.5" ry="5" fill="#E8C4A8"/>
+            <!-- 短发 -->
+            <path d="M17 42 Q18 20 40 17 Q62 20 63 42 Q58 30 40 28 Q22 30 17 42Z" fill="#1a1a2e"/>
+            <path d="M17 42 Q15 50 17 56 Q18 48 20 42Z" fill="#1a1a2e"/>
+            <path d="M63 42 Q65 50 63 56 Q62 48 60 42Z" fill="#1a1a2e"/>
+            <!-- 警长粗眉毛（浓密粗眉） -->
+            <path d="M24 39 L35 38" stroke="#1a1a2e" stroke-width="3" stroke-linecap="round"/>
+            <path d="M45 38 L56 39" stroke="#1a1a2e" stroke-width="3" stroke-linecap="round"/>
+            <!-- 坚毅眼睛 -->
+            <ellipse cx="31" cy="46" rx="3" ry="3.5" fill="#1a1a2e"/>
+            <ellipse cx="49" cy="46" rx="3" ry="3.5" fill="#1a1a2e"/>
+            <circle cx="32" cy="45" r="1" fill="white"/>
+            <circle cx="50" cy="45" r="1" fill="white"/>
+            <!-- 自信微笑 -->
+            <path d="M36 57 Q40 60 44 57" stroke="#c97878" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <!-- 警长帽 -->
+            <path d="M16 28 Q40 14 64 28 L62 26 Q40 12 18 26Z" fill="#1e3a5f"/>
+            <line x1="16" y1="28" x2="64" y2="28" stroke="#fbbf24" stroke-width="1.5"/>
+            <!-- 帽徽（警星） -->
+            <polygon points="40,17 42,22 40,25 38,22" fill="#fbbf24"/>
+            <circle cx="40" cy="21" r="1.5" fill="#1e3a5f"/>
+            <!-- 手臂 -->
+            <rect x="14" y="70" width="9" height="22" rx="4" fill="#1e3a5f" transform="rotate(-15 18 81)"/>
+            <rect x="57" y="70" width="9" height="22" rx="4" fill="#1e3a5f" transform="rotate(15 61 81)"/>
+          </svg>
+        </div>
+        <h3 class="text-center text-lg font-bold text-white mb-1 tracking-wide">Secretary</h3>
+        <p class="text-center text-violet-400 text-xs font-mono mb-3">摄影师 · 团队协调官</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">摄影</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[97%] bg-gradient-to-r from-violet-500 to-violet-300 rounded-full"></div></div></div>
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">协调</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[95%] bg-gradient-to-r from-blue-500 to-blue-300 rounded-full"></div></div></div>
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">温和</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[98%] bg-gradient-to-r from-teal-500 to-teal-300 rounded-full"></div></div></div>
+        </div>
+        <p class="text-center text-white/40 text-[11px] mt-3 italic">"态度温和的大管家"</p>
+        <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="box-shadow: inset 0 0 30px rgba(139,92,246,0.1);"></div>
+      </div>
+
+      <!-- ========== 角色6: Shu.Y ========== -->
+      <div class="character-card group relative rounded-xl border-2 border-white/10 bg-gradient-to-b from-white/[0.08] to-transparent backdrop-blur-sm p-5 cursor-pointer transition-all duration-300 hover:border-pink-400/60 hover:shadow-[0_0_30px_rgba(244,114,182,0.15)] hover:-translate-y-2">
+        <div class="absolute -top-3 left-4 px-3 py-0.5 bg-pink-500/90 rounded-full text-[10px] font-bold text-white tracking-wider">P6</div>
+        <div class="flex justify-center mb-3 group-hover:scale-105 transition-transform duration-300">
+          <svg width="80" height="120" viewBox="0 0 80 120" class="drop-shadow-lg">
+            <!-- 身体 - 温柔裙装 -->
+            <path d="M28 65 L52 65 L56 100 L24 100 Z" fill="#ec4899" rx="4"/>
+            <rect x="28" y="98" width="9" height="17" rx="4" fill="#FDDCBD"/>
+            <rect x="43" y="98" width="9" height="17" rx="4" fill="#FDDCBD"/>
+            <!-- 头 -->
+            <ellipse cx="40" cy="45" rx="20" ry="22" fill="#FDE8D0"/>
+            <ellipse cx="19" cy="46" rx="3.5" ry="4.5" fill="#F5CCAA"/>
+            <ellipse cx="61" cy="46" rx="3.5" ry="4.5" fill="#F5CCAA"/>
+            <!-- 温柔长辫子 -->
+            <path d="M19 43 Q17 22 40 18 Q63 22 61 43 Q57 32 40 30 Q23 32 19 43Z" fill="#4a3728"/>
+            <!-- 左长辫 -->
+            <path d="M12 48 Q6 65 8 85 Q12 70 16 52Z" fill="#4a3728"/>
+            <!-- 右长辫 -->
+            <path d="M68 48 Q74 65 72 85 Q68 70 64 52Z" fill="#4a3728"/>
+            <!-- 弯弯月亮眼（美化版） -->
+            <path d="M26 46 Q29 42 33 45 Q35 47 34 49" stroke="#2d1810" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M46 46 Q49 42 53 45 Q55 47 54 49" stroke="#2d1810" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- 眼珠 -->
+            <ellipse cx="32" cy="47" rx="2" ry="2.5" fill="#2d1810"/>
+            <ellipse cx="50" cy="47" rx="2" ry="2.5" fill="#2d1810"/>
+            <!-- 高光 -->
+            <circle cx="32.6" cy="46" r="0.8" fill="white"/>
+            <circle cx="50.6" cy="46" r="0.8" fill="white"/>
+            <!-- 长睫毛 -->
+            <path d="M26 45 L24 43" stroke="#2d1810" stroke-width="1" stroke-linecap="round"/>
+            <path d="M28 43 L27 40" stroke="#2d1810" stroke-width="1" stroke-linecap="round"/>
+            <path d="M46 45 L44 43" stroke="#2d1810" stroke-width="1" stroke-linecap="round"/>
+            <path d="M48 43 L47 40" stroke="#2d1810" stroke-width="1" stroke-linecap="round"/>
+            <!-- 淡淡腮红 -->
+            <ellipse cx="25" cy="53" rx="4" ry="2.5" fill="#ffc0cb" opacity="0.4"/>
+            <ellipse cx="55" cy="53" rx="4" ry="2.5" fill="#ffc0cb" opacity="0.4"/>
+            <!-- 温柔微笑 -->
+            <path d="M36 56 Q40 60 44 56" stroke="#e88fa0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <!-- 手臂（温柔姿态） -->
+            <rect x="17" y="69" width="8" height="20" rx="4" fill="#ec4899" transform="rotate(5 21 79)"/>
+            <rect x="55" y="69" width="8" height="20" rx="4" fill="#ec4899" transform="rotate(-5 59 79)"/>
+          </svg>
+        </div>
+        <h3 class="text-center text-lg font-bold text-white mb-1 tracking-wide">Shu.Y</h3>
+        <p class="text-center text-pink-400 text-xs font-mono mb-3">细心大组长 · 温柔管家</p>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">后勤</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[98%] bg-gradient-to-r from-pink-500 to-pink-300 rounded-full"></div></div></div>
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">细心</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[99%] bg-gradient-to-r from-amber-500 to-amber-300 rounded-full"></div></div></div>
+          <div class="flex items-center gap-2"><span class="text-[10px] text-white/50 w-10">温柔</span><div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[100%] bg-gradient-to-r from-rose-400 to-rose-300 rounded-full"></div></div></div>
+        </div>
+        <p class="text-center text-white/40 text-[11px] mt-3 italic">"大家放心，我都安排好了～"</p>
+        <div class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="box-shadow: inset 0 0 30px rgba(244,114,182,0.1);"></div>
+      </div>
+
+    </div>
+
+    <!-- 底部装饰 -->
+    <div class="text-center mt-16">
+      <div class="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-emerald-500/30 bg-emerald-500/5">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-emerald-400/80 text-sm font-mono tracking-wider">ALL PLAYERS ONLINE · ADVENTURE AWAITS</span>
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ==================== 出发准备 - 游戏任务面板风格 ==================== -->
+<section id="info" class="min-h-screen relative overflow-hidden" style="background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 40%, #0a1a2e 80%, #0a1628 100%);">
+  <!-- 装饰性网格背景 -->
+  <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+  <!-- 装饰性光晕 -->
+  <div class="absolute top-20 left-10 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-20 right-10 w-72 h-72 bg-violet-500/5 rounded-full blur-3xl"></div>
+
+  <div class="relative z-10 w-full max-w-5xl mx-auto px-6 py-24 scroll-fade">
+    <!-- 标题区 -->
+    <div class="text-center mb-16">
+      <p class="text-emerald-400 text-sm font-mono tracking-[0.3em] mb-3 uppercase">-- Mission Briefing --</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4" style="font-family: 'Impact', 'Arial Black', sans-serif; letter-spacing: 0.05em; text-shadow: 0 0 30px rgba(34,197,94,0.3), 0 4px 0 #064e3b;">让勇士们做好准备出发吧</h2>
+      <p class="text-white/50 text-sm">MISSION DATA · EQUIPMENT CHECK · CONTINGENCY PLAN</p>
+      <div class="flex items-center justify-center gap-3 mt-6">
+        <span class="w-16 h-[2px] bg-gradient-to-r from-transparent to-emerald-500"></span>
+        <span class="text-emerald-500 text-xs">⚔ ◆ ⚔</span>
+        <span class="w-16 h-[2px] bg-gradient-to-l from-transparent to-emerald-500"></span>
+      </div>
+    </div>
+
+    <!-- 任务卡片网格 -->
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+
+      <!-- 卡片1: 交通任务 -->
+      <div class="group relative rounded-xl border-2 border-emerald-500/20 bg-gradient-to-b from-emerald-500/[0.08] to-transparent backdrop-blur-sm p-6 hover:border-emerald-400/50 hover:shadow-[0_0_25px_rgba(34,197,94,0.12)] transition-all duration-300">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-lg">🚗</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-lg">交通任务</h3>
+            <p class="text-emerald-400/70 text-xs font-mono">TRANSPORT</p>
+          </div>
+          <div class="ml-auto px-2 py-0.5 bg-emerald-500/20 rounded text-[10px] text-emerald-400 font-bold">KEY</div>
+        </div>
+        <ul class="space-y-3 text-white/80 text-sm">
+          <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">▸</span><span>全程预留 <strong class="text-white">1-1.5h</strong> 堵车冗余</span></li>
+          <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">▸</span><span>9.30 茂兰直穿黄果树<br/><span class="text-white/40 text-xs">零无效折返 · 动线最优</span></span></li>
+          <li class="flex items-start gap-2"><span class="text-emerald-400 mt-0.5">▸</span><span>最后三日常驻龙洞堡<br/><span class="text-white/40 text-xs">彻底杜绝误机风险</span></span></li>
+        </ul>
+        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[10px] text-white/30 font-mono">STATUS: READY</span>
+          <div class="flex gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 卡片2: 住宿基地 -->
+      <div class="group relative rounded-xl border-2 border-blue-500/20 bg-gradient-to-b from-blue-500/[0.08] to-transparent backdrop-blur-sm p-6 hover:border-blue-400/50 hover:shadow-[0_0_25px_rgba(59,130,246,0.12)] transition-all duration-300">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+            <span class="text-lg">🏨</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-lg">住宿基地</h3>
+            <p class="text-blue-400/70 text-xs font-mono">BASE CAMP</p>
+          </div>
+          <div class="ml-auto px-2 py-0.5 bg-blue-500/20 rounded text-[10px] text-blue-400 font-bold">INFO</div>
+        </div>
+        <div class="space-y-3">
+          <div class="bg-white/5 rounded-lg p-3">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-blue-400 text-xs font-mono">DAY 1-2</span>
+              <span class="text-[10px] text-white/30">茂兰</span>
+            </div>
+            <p class="text-white/90 text-sm font-medium">五眼桥民宿</p>
+            <p class="text-white/40 text-xs">徒步零距离</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-blue-400 text-xs font-mono">DAY 3-4</span>
+              <span class="text-[10px] text-white/30">黄果树</span>
+            </div>
+            <p class="text-white/90 text-sm font-medium">黄果树镇酒店</p>
+            <p class="text-white/40 text-xs">紧邻景区</p>
+          </div>
+          <div class="bg-white/5 rounded-lg p-3">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-blue-400 text-xs font-mono">DAY 5-7</span>
+              <span class="text-[10px] text-white/30">龙洞堡</span>
+            </div>
+            <p class="text-white/90 text-sm font-medium">机场酒店</p>
+            <p class="text-white/40 text-xs">返程兜底</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[10px] text-white/30 font-mono">3 BASES</span>
+          <div class="flex gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 卡片3: 应急预案 -->
+      <div class="group relative rounded-xl border-2 border-amber-500/20 bg-gradient-to-b from-amber-500/[0.08] to-transparent backdrop-blur-sm p-6 hover:border-amber-400/50 hover:shadow-[0_0_25px_rgba(245,158,11,0.12)] transition-all duration-300">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
+            <span class="text-lg">⚠️</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-lg">应急预案</h3>
+            <p class="text-amber-400/70 text-xs font-mono">CONTINGENCY</p>
+          </div>
+          <div class="ml-auto px-2 py-0.5 bg-amber-500/20 rounded text-[10px] text-amber-400 font-bold">PLAN B</div>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center shrink-0 mt-0.5">
+              <span class="text-sm">🌧️</span>
+            </div>
+            <div>
+              <p class="text-white/90 text-sm font-medium">雨天预案</p>
+              <p class="text-white/50 text-xs leading-relaxed">漂流→轻徒步 · 冰臼禁止下河谷</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+            <div class="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center shrink-0 mt-0.5">
+              <span class="text-sm">💪</span>
+            </div>
+            <div>
+              <p class="text-white/90 text-sm font-medium">体力预案</p>
+              <p class="text-white/50 text-xs leading-relaxed">加餐点位可跳过 · 休息优先</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+            <div class="w-8 h-8 rounded-lg bg-red-500/20 flex items-center justify-center shrink-0 mt-0.5">
+              <span class="text-sm">🚦</span>
+            </div>
+            <div>
+              <p class="text-white/90 text-sm font-medium">堵车预案</p>
+              <p class="text-white/50 text-xs leading-relaxed">保障核心体验 · 舍弃次要打卡点</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[10px] text-white/30 font-mono">3 PLANS</span>
+          <div class="flex gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 底部出发按钮区 -->
+    <div class="text-center mt-12">
+      <div class="inline-flex flex-col items-center gap-4">
+        <!-- 倒计时风格 -->
+        <div class="flex items-center gap-4 text-white/60 text-sm font-mono">
+          <div class="text-center">
+            <p class="text-2xl font-bold text-emerald-400">09.28</p>
+            <p class="text-[10px] text-white/30">DEPARTURE</p>
+          </div>
+          <div class="w-px h-10 bg-white/10"></div>
+          <div class="text-center">
+            <p class="text-2xl font-bold text-cyan-400">10.05</p>
+            <p class="text-[10px] text-white/30">RETURN</p>
+          </div>
+          <div class="w-px h-10 bg-white/10"></div>
+          <div class="text-center">
+            <p class="text-2xl font-bold text-yellow-400">8 DAYS</p>
+            <p class="text-[10px] text-white/30">DURATION</p>
+          </div>
+        </div>
+        <!-- 出发按钮 -->
+        <button class="group relative px-12 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold text-lg tracking-wider overflow-hidden transition-all duration-300 hover:from-emerald-500 hover:to-emerald-400 hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] hover:scale-105 active:scale-95">
+          <span class="relative z-10 flex items-center gap-3">
+            <span>⚔️</span>
+            <span>ADVENTURE STARTS NOW</span>
+            <span>🌲</span>
+          </span>
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+        </button>
+        <p class="text-white/30 text-xs font-mono tracking-widest">PRESS TO BEGIN YOUR JOURNEY</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black/60 text-white text-center py-16 border-t border-white/10">
+  <p class="text-lg font-serif mb-3 tracking-widest">自由 · 追风 · 冒险 · 生命</p>
+  <p class="text-white/50 text-sm">RIVER CHEN</p>
+</footer>
+
+<!-- JavaScript -->
+<script>
+// 导航栏吸顶效果
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    navbar.classList.add('bg-black/70', 'backdrop-blur-md', 'shadow-lg');
+  } else {
+    navbar.classList.remove('bg-black/70', 'backdrop-blur-md', 'shadow-lg');
+  }
+});
+
+// 导航链接平滑滚动（补偿固定导航栏高度）
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+    const targetEl = document.querySelector(targetId);
+    if (targetEl) {
+      const navHeight = navbar.offsetHeight;
+      const targetPosition = targetEl.getBoundingClientRect().top + window.scrollY - navHeight - 20;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    }
+  });
+});
+
+// 滚动渐入动画
+const fadeEls = document.querySelectorAll('.scroll-fade');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(item => {
+    if (item.isIntersecting) item.target.classList.add('show');
+  });
+}, { threshold: 0.1 });
+fadeEls.forEach(el => observer.observe(el));
+
+// 背景图片加载检测：加载完成后隐藏 "GitHub持续加载中" 提示
+(function() {
+  const loadingSections = [
+    { el: document.getElementById('loading-hero'),       url: 'https://images.unsplash.com/photo-1586023281874-23b66b9ea530?w=2070&auto=format&fit=crop&q=80' },
+    { el: document.getElementById('loading-overview'),   url: 'https://images.pexels.com/photos/38964584/pexels-photo-38964584.jpeg?auto=compress&cs=tinysrgb&w=1920' },
+    { el: document.getElementById('loading-gallery'),    url: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop' }
+  ];
+  loadingSections.forEach(({ el, url }) => {
+    if (!el) return;
+    const img = new Image();
+    img.onload = () => { el.classList.add('hidden'); };
+    img.onerror = () => { /* 图片加载失败时保留提示 */ };
+    // 超时兜底：8秒后无论是否加载完都隐藏（避免提示一直显示）
+    setTimeout(() => { if (el && !el.classList.contains('hidden')) el.classList.add('hidden'); }, 8000);
+    img.src = url;
+  });
+})();
+</script>
+
+</body>
+</html>
